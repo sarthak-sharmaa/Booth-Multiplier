@@ -1,7 +1,7 @@
 `include "1_xor.v"
 `include "2_fa.v"
 
-module eight_bit_adder_subractor(
+module eight_bit_adder_subtractor(
                                 input wire cin,
                                 input wire [7:0] i0,i1,
                                 output wire [7:0] sum)
@@ -10,9 +10,7 @@ module eight_bit_adder_subractor(
 	wire cout;
 	wire [7:0] temp;
 	wire [7:0] int_ip; //intermediate input - processed from the inputs and fed into fa module 
-	
-	//if cin == 1, int_ip = 1's complement
-	//else int_ip = i1
+
 
     xor2 x0 (i1[0], cin, int_ip[0]);
     xor2 x1 (i1[1], cin, int_ip[1]);
@@ -23,8 +21,6 @@ module eight_bit_adder_subractor(
     xor2 x6 (i1[6], cin, int_ip[6]);
     xor2 x7 (i1[7], cin, int_ip[7]);
     
-    //if cin == 1, cin added to make two's complement
-    //else addition takes place
 
 	fa fa1(i0[0], int_ip[0], cin,     sum[0], temp[0]);
 	fa fa2(i0[1], int_ip[1], temp[0], sum[1], temp[1]);
