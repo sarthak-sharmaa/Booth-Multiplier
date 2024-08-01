@@ -11,7 +11,7 @@ module booth_substep(
     
 	wire [7:0] addsub_temp;  //next value of q_-1 th bit
 	
-	eight_bit_adder_subractor myadd(Q[0], acc, multiplicand, addsub_temp);
+	eight_bit_adder_subtractor myadd(Q[0], acc, multiplicand, addsub_temp);
 	
 		always @(*) begin	
 		if(Q[0] == q0) begin
